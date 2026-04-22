@@ -73,7 +73,7 @@ The ${BUSINESS} Team
   await resend.emails.send({
     from: `${BUSINESS} <${FROM}>`,
     to: lead.email,
-    replyTo: REPLY_TO,
+    reply_to: REPLY_TO,
     subject: `We received your offer request for your ${vehicleLabel}`,
     html,
     text,
