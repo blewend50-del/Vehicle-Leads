@@ -1,0 +1,37 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Lead {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Contact info
+  fullName    String
+  phone       String
+  email       String
+  zipCode     String
+
+  // Vehicle info
+  year        Int
+  make        String
+  model       String
+  trim        String?
+  mileage     Int
+  condition   String  // excellent | good | fair | poor
+  hasAccident Boolean
+
+  // Optional photo (stored as base64)
+  photoData   String?
+  photoName   String?
+
+  // Admin fields
+  status      String  @default("new") // new | contacted | offer_made | acquired | dead
+  notes       String?
+}
