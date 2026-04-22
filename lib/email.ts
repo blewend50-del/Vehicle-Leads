@@ -1,7 +1,5 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const FROM = process.env.RESEND_FROM_EMAIL ?? 'noreply@example.com';
 const BUSINESS = process.env.BUSINESS_NAME ?? 'AutoCash Buyers';
 const REPLY_TO = process.env.REPLY_TO_EMAIL ?? FROM;
@@ -16,6 +14,9 @@ export interface LeadEmailData {
 }
 
 export async function sendSellerConfirmation(lead: LeadEmailData): Promise<void> {
+  if (!process.env.RESEND_API_KEY) return; // skip silently if no key configured
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const vehicleLabel = [lead.year, lead.make, lead.model, lead.trim]
     .filter(Boolean)
     .join(' ');
