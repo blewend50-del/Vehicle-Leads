@@ -67,6 +67,7 @@ export default function LeadForm() {
     if (!form.year) e.year = 'Year is required';
     if (!form.make) e.make = 'Make is required';
     if (!form.model.trim()) e.model = 'Model is required';
+    if (!form.vin.trim()) e.vin = 'VIN is required';
     if (!form.mileage || isNaN(Number(form.mileage))) e.mileage = 'Mileage is required';
     if (!form.condition) e.condition = 'Condition is required';
     if (!form.hasAccident) e.hasAccident = 'Please select an option';
@@ -238,7 +239,7 @@ export default function LeadForm() {
             />
           </div>
           <div className="sm:col-span-2">
-            <label className="form-label">VIN <span className="text-gray-400 font-normal">(optional)</span></label>
+            <label className="form-label">VIN *</label>
             <input
               className="form-input"
               type="text"
@@ -247,6 +248,7 @@ export default function LeadForm() {
               value={form.vin}
               onChange={(e) => set('vin', e.target.value.toUpperCase())}
             />
+            {errors.vin && <p className="mt-1 text-sm text-red-600">{errors.vin}</p>}
           </div>
           <div className="sm:col-span-2">
             <label className="form-label">Mileage *</label>
