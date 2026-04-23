@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const make = formData.get('make') as string;
     const model = formData.get('model') as string;
     const trim = (formData.get('trim') as string) || null;
-    const vin = (formData.get('vin') as string) || null;
+    const vin = (formData.get('vin') as string) || '';
     const mileage = parseInt(formData.get('mileage') as string, 10);
     const condition = formData.get('condition') as string;
     const hasAccident = formData.get('hasAccident') === 'true';
