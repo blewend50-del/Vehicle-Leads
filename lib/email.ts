@@ -48,9 +48,9 @@ export async function sendSellerConfirmation(lead: LeadEmailData): Promise<void>
       A vehicle specialist will review your details and call or text you with a <strong>no-obligation cash offer</strong>. There's nothing more you need to do right now — just keep your phone handy.
     </div>
     <p>Questions? Reply to this email or call us directly — we're happy to help.</p>
-    <p style="margin-top: 24px;">Thanks again,<br><strong>The ${BUSINESS} Team</strong></p>
+    <p style="margin-top: 24px;">Thanks again,<br><strong>The ${BUSINESS}</strong></p>
     <div class="footer">
-      This email was sent because you submitted a vehicle offer request at ${BUSINESS}.<br>
+      This email was sent because you submitted a vehicle offer request to ${BUSINESS}.<br>
       No obligation — you are free to decline any offer.
     </div>
   </div>
@@ -68,7 +68,7 @@ Our team has received your information and will be in touch within 1 business ho
 Questions? Just reply to this email.
 
 Thanks,
-The ${BUSINESS} Team
+The ${BUSINESS}
   `.trim();
 
   await resend.emails.send({
