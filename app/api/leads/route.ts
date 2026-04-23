@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
-import { sendSellerConfirmation } from '@/lib/email';
+import { sendSellerConfirmation, sendLeadNotification } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -52,10 +52,11 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Send confirmation email (non-blocking — don't fail the request if email fails)
-    sendSellerConfirmation({ fullName, email, year, make, model, trim }).catch((err) =>
-      console.error('Email send failed:', err)
-    );
+    const emailData = { fullName, email, phone, year, make, model, trim, vin, mileage, condition, hasAccident, zipCode };
+
+    // Send confirmation to seller and notification to admin (non-blocking)
+    sendSellerConfirmation(emailData).catch((err) => console.error('Confirmation email failed:', err));
+    sendLeadNotification(emailData).catch((err) => console.error('Notification email failed:', err));
 
     return NextResponse.json({ success: true, id: lead.id });
   } catch (err) {
