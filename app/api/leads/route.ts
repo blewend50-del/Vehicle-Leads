@@ -85,6 +85,7 @@ export async function GET(request: NextRequest) {
         make: true,
         model: true,
         trim: true,
+        vin: true,
         mileage: true,
         condition: true,
         hasAccident: true,

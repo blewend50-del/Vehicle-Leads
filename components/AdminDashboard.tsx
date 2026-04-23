@@ -14,6 +14,7 @@ interface Lead {
   make: string;
   model: string;
   trim: string | null;
+  vin: string | null;
   mileage: number;
   condition: string;
   hasAccident: boolean;
@@ -253,12 +254,27 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3 whitespace-nowrap">
                         <div className="font-medium text-gray-900">{lead.year} {lead.make} {lead.model}</div>
                         {lead.trim && <div className="text-xs text-gray-500">{lead.trim}</div>}
-                        {lead.hasAccident && (
-                          <span className="text-xs bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-medium">Accident</span>
+                        {lead.vin && (
+                          <div className="flex items-center gap-1.5 mt-1">
+                            <span className="text-xs text-gray-500 font-mono">{lead.vin}</span>
+                            <a
+                              href={`https://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${lead.vin}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs bg-orange-100 text-orange-700 hover:bg-orange-200 px-1.5 py-0.5 rounded font-semibold transition-colors"
+                            >
+                              Carfax →
+                            </a>
+                          </div>
                         )}
-                        {lead.photoName && (
-                          <span className="text-xs text-gray-400 ml-1">📷</span>
-                        )}
+                        <div className="flex items-center gap-1 mt-1">
+                          {lead.hasAccident && (
+                            <span className="text-xs bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-medium">Accident</span>
+                          )}
+                          {lead.photoName && (
+                            <span className="text-xs text-gray-400">📷</span>
+                          )}
+                        </div>
                       </td>
 
                       {/* Mileage */}
