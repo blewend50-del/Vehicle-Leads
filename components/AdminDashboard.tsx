@@ -258,7 +258,7 @@ export default function AdminDashboard() {
                           <div className="flex items-center gap-1.5 mt-1">
                             <span className="text-xs text-gray-500 font-mono">{lead.vin}</span>
                             <a
-                              href={`https://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${lead.vin}`}
+                              href={`https://www.carfaxonline.com/vhr/${lead.vin}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-xs bg-orange-100 text-orange-700 hover:bg-orange-200 px-1.5 py-0.5 rounded font-semibold transition-colors"
