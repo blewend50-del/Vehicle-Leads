@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 const FROM = process.env.RESEND_FROM_EMAIL ?? 'noreply@example.com';
-const BUSINESS = process.env.BUSINESS_NAME ?? 'AutoCash Buyers';
+const BUSINESS = process.env.BUSINESS_NAME ?? 'Progressive Motors Acquisition Team';
 const REPLY_TO = process.env.REPLY_TO_EMAIL ?? FROM;
 
 export interface LeadEmailData {
