@@ -23,6 +23,7 @@ model Lead {
   make        String
   model       String
   trim        String?
+  vin         String?
   mileage     Int
   condition   String  // excellent | good | fair | poor
   hasAccident Boolean

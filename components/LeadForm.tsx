@@ -31,6 +31,7 @@ interface FormState {
   make: string;
   model: string;
   trim: string;
+  vin: string;
   mileage: string;
   condition: string;
   hasAccident: string;
@@ -39,7 +40,7 @@ interface FormState {
 
 const INITIAL: FormState = {
   fullName: '', phone: '', email: '', zipCode: '',
-  year: '', make: '', model: '', trim: '',
+  year: '', make: '', model: '', trim: '', vin: '',
   mileage: '', condition: '', hasAccident: '',
   photo: null,
 };
@@ -234,6 +235,17 @@ export default function LeadForm() {
               placeholder="e.g. SE, XLT, Limited"
               value={form.trim}
               onChange={(e) => set('trim', e.target.value)}
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <label className="form-label">VIN <span className="text-gray-400 font-normal">(optional)</span></label>
+            <input
+              className="form-input"
+              type="text"
+              placeholder="e.g. 1HGBH41JXMN109186"
+              maxLength={17}
+              value={form.vin}
+              onChange={(e) => set('vin', e.target.value.toUpperCase())}
             />
           </div>
           <div className="sm:col-span-2">
